@@ -4,4 +4,4 @@ declare  module '*.scss' {
     }
     const className: IClassNames;
     export = className
-};
+}
