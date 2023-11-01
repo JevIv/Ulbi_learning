@@ -7,7 +7,9 @@
     "start": "webpack serve --env port=3001",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unit:test": "jest --config ./config/jest/jest.config.ts",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "keywords": [],
   "author": "",
