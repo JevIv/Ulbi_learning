@@ -1,5 +1,8 @@
 {
   "Test example": "Test example",
   "Translate": "Translate",
-  "Language": "Russian"
+  "Language": "Russian",
+  "Page not found": "Page not found",
+  "Unexpected error occurred": "Unexpected error occurred",
+  "Refresh page": "Refresh page"
 }
