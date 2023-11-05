@@ -18,16 +18,14 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false
-        }),
         ]
 
-    // @ts-ignore
-    return plugins.filter(plugin => plugin.constructor.name !== 'IgnorePlugin'),
-        new webpack.IgnorePlugin({
-            resourceRegExp: /react-dom\/client$/,
-            contextRegExp: /(app\/react|app\\react|@storybook\/react|@storybook\\react)/
-        })
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false
+        }));
+    }
+
+    return plugins
 }
