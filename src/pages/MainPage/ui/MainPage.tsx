@@ -6,7 +6,7 @@ const MainPage = () => {
     const { t } = useTranslation('main');
     return (
         <div>
-            <BugButton/>
+            {/*<BugButton/>*/}
             {t('Main page')}
         </div>
     )

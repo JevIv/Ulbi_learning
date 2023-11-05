@@ -1,13 +1,14 @@
 import React from 'react';
 import {classNames} from "shared/lib/classNames/classNames";
 import {useTranslation} from "react-i18next";
-import {Button, ThemeButton} from "shared/ui/Button/Button";
+import {Button, ButtonTheme} from "shared/ui/Button/Button";
 
 interface LangSwitcerProps {
     className?: string;
+    short?: boolean;
 }
 
-export const LangSwitcer = ({className}: LangSwitcerProps) => {
+export const LangSwitcer = ({className, short}: LangSwitcerProps) => {
 
     const { t, i18n } = useTranslation();
 
@@ -18,10 +19,10 @@ export const LangSwitcer = ({className}: LangSwitcerProps) => {
     return (
         <Button
             className={classNames('',{},[className])}
-            theme={ThemeButton.CLEAR}
+            theme={ButtonTheme.CLEAR}
             onClick={toggle}
         >
-            {t('Language')}
+            {t(short ? 'Short language' : 'Language')}
         </Button>
     );
 };
