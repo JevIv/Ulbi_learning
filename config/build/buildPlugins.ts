@@ -5,7 +5,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+
+    const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html
         }),
@@ -21,5 +22,12 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new BundleAnalyzerPlugin({
             openAnalyzer: false
         }),
-    ]
+        ]
+
+    // @ts-ignore
+    return plugins.filter(plugin => plugin.constructor.name !== 'IgnorePlugin'),
+        new webpack.IgnorePlugin({
+            resourceRegExp: /react-dom\/client$/,
+            contextRegExp: /(app\/react|app\\react|@storybook\/react|@storybook\\react)/
+        })
 }
